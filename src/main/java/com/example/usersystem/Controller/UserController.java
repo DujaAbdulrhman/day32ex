@@ -54,7 +54,8 @@ public class UserController {
     public ResponseEntity checkUandP(@RequestParam String username, @RequestParam String password) {
         boolean valid = userService.checkUandP(username, password);
         if (valid) {
-            return ResponseEntity.ok(new Api("Username and password are correct"));
+                        return ResponseEntity.status(200).body(new Api("Username and password are raight"));)
+
         }
         return ResponseEntity.status(400).body(new Api("Invalid username or password"));
     }
@@ -63,7 +64,7 @@ public class UserController {
     public ResponseEntity deleteUser(@PathVariable Integer id) {
         boolean deleted = userService.deleteUser(id);
         if (deleted) {
-            return ResponseEntity.ok(new Api("User deleted successfully"));
+                       return ResponseEntity.status(200).body(new Api("User deleted successfully"));
         }
         return ResponseEntity.status(400).body(new Api("User not found"));
     }
@@ -76,14 +77,14 @@ public class UserController {
 
         boolean updated = userService.updateuser(user);
         if (updated) {
-            return ResponseEntity.ok(new Api("User updated successfully"));
+                       return ResponseEntity.status(200).body(new Api("User updated successfully"));
         }
         return ResponseEntity.status(400).body(new Api("User not found"));
     }
     @GetMapping("/age/{age}")
     public ResponseEntity getUsersByAge(@PathVariable Integer age) {
         List<User> users = userService.getUsersByAge(age);
-        return ResponseEntity.ok(users);
+        return ResponseEntity.status(200).body(users)
     }
 
     @GetMapping("/role/{role}")
