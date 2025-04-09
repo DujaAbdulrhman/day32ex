@@ -54,7 +54,7 @@ public class UserController {
     public ResponseEntity checkUandP(@RequestParam String username, @RequestParam String password) {
         boolean valid = userService.checkUandP(username, password);
         if (valid) {
-                        return ResponseEntity.status(200).body(new Api("Username and password are raight"));)
+                        return ResponseEntity.status(200).body(new Api("Username and password are right"));
 
         }
         return ResponseEntity.status(400).body(new Api("Invalid username or password"));
